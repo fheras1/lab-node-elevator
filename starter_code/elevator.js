@@ -8,16 +8,29 @@ class Elevator {
   }
 
   start() {
-    setInterval(() => this.update(), 1000);
+    this.interval = setInterval(() => {
+      this.update();
+    }, 1000);
   }
-  stop() { }
+  stop() {
+    clearInterval(this.interval);
+  }
   update() {
     this.log();
    }
   _passengersEnter() { }
   _passengersLeave() { }
-  floorUp() { }
-  floorDown() { }
+
+  floorUp() {
+    if (this.floor < 10) {
+          this.floor++;
+  }
+
+  floorDown() {
+    if (this.floor > 0) {
+          this.floor--;
+  }
+
   call() { }
   log() {
     console.log("Direction: " + this.direction + " | Floor: " + this.floor );
